@@ -166,7 +166,7 @@ volatile int rx_buf_offset; // remember to initialize it!
 #define DEFAULT_CHANNEL 37
 #define DEFAULT_ACCESS_ADDR (0x8E89BED6)
 #define DEFAULT_CRC_INIT (0x555555)
-#define MAX_CHANNEL_NUMBER 39
+#define MAX_CHANNEL_NUMBER 140
 #define MAX_NUM_INFO_BYTE (43)
 #define MAX_NUM_PHY_BYTE (47)
 //#define MAX_NUM_PHY_SAMPLE ((MAX_NUM_PHY_BYTE*8*SAMPLE_PER_SYMBOL)+(LEN_GAUSS_FILTER*SAMPLE_PER_SYMBOL))
@@ -931,20 +931,14 @@ static const uint_fast32_t crc_table[256] = {
 
 uint64_t get_freq_by_channel_number(int channel_number) {
   uint64_t freq_hz;
-  if ( channel_number == 37 ) {
-    freq_hz = 2402000000ull;
-  } else if (channel_number == 38) {
-    freq_hz = 2426000000ull;
-  } else if (channel_number == 39) {
-    freq_hz = 2480000000ull;
-  } else if (channel_number >=0 && channel_number <= 10 ) {
-    freq_hz = 2404000000ull + channel_number*2000000ull;
-  } else if (channel_number >=11 && channel_number <= 36 ) {
-    freq_hz = 2428000000ull + (channel_number-11)*2000000ull;
-  } else {
-    freq_hz = 0xffffffffffffffff;
+
+  if ( channel_number < 100){
+      freq_hz = 2400000000ull + channel_number * 1000000ull;
+  }else{
+      channel_number -= 100;
+      freq_hz = 2360000000ull + channel_number * 1000000ull;
   }
-  return(freq_hz);
+  return (freq_hz);
 }
 
 typedef enum

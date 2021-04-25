@@ -34,6 +34,9 @@ install(TARGETS btle_tx RUNTIME DESTINATION ${INSTALL_DEFAULT_BINDIR})
 add_executable(btle_rx btle_rx.c)
 install(TARGETS btle_rx RUNTIME DESTINATION ${INSTALL_DEFAULT_BINDIR})
 
+add_executable(gbbmn_esb gbbmn_esb.c)
+install(TARGETS gbbmn_esb RUNTIME DESTINATION ${INSTALL_DEFAULT_BINDIR})
+
 IF (USE_BLADERF MATCHES 1)
 include_directories(${LIBBLADERF_INCLUDE_DIR})
 LIST(APPEND TOOLS_LINK_LIBS ${LIBBLADERF_LIBRARIES})
@@ -54,8 +57,10 @@ target_link_libraries(btle_tx ${TOOLS_LINK_LIBS} m)
 
 IF (USE_BLADERF MATCHES 1)
 target_link_libraries(btle_rx ${TOOLS_LINK_LIBS} m -lpthread)
+target_link_libraries(gbbmn_esb ${TOOLS_LINK_LIBS} m -lpthread)
 ELSE (USE_BLADERF MATCHES 1)
 target_link_libraries(btle_rx ${TOOLS_LINK_LIBS} m)
+target_link_libraries(gbbmn_esb ${TOOLS_LINK_LIBS} m)
 ENDIF (USE_BLADERF MATCHES 1)
 
 # MESSAGE(STATUS "1")
