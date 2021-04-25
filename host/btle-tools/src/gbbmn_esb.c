@@ -162,8 +162,8 @@ volatile int rx_buf_offset; // remember to initialize it!
 
 //----------------------------------BTLE SPEC related--------------------------------
 #include "scramble_table.h"
-#define DEFAULT_CHANNEL 37
-#define DEFAULT_ACCESS_ADDR (0x8E89BED6)
+#define DEFAULT_CHANNEL 99
+#define DEFAULT_ACCESS_ADDR (0x7E7E7E7E)
 #define DEFAULT_CRC_INIT (0x555555)
 #define MAX_CHANNEL_NUMBER 140
 #define MAX_NUM_INFO_BYTE (43)
@@ -940,185 +940,6 @@ uint64_t get_freq_by_channel_number(int channel_number) {
     return (freq_hz);
 }
 
-//typedef enum
-//{
-//    LL_RESERVED,
-//    LL_DATA1,
-//    LL_DATA2,
-//    LL_CTRL
-//} LL_PDU_TYPE;
-//
-//char *LL_PDU_TYPE_STR[] = {
-//        "LL_RESERVED",
-//        "LL_DATA1",
-//        "LL_DATA2",
-//        "LL_CTRL"
-//};
-//
-//typedef struct {
-//    uint8_t Data[40];
-//} LL_DATA_PDU_PAYLOAD_TYPE;
-//
-//typedef enum
-//{
-//    LL_CONNECTION_UPDATE_REQ = 0,
-//    LL_CHANNEL_MAP_REQ= 1,
-//    LL_TERMINATE_IND= 2,
-//    LL_ENC_REQ= 3,
-//    LL_ENC_RSP= 4,
-//    LL_START_ENC_REQ= 5,
-//    LL_START_ENC_RSP= 6,
-//    LL_UNKNOWN_RSP= 7,
-//    LL_FEATURE_REQ= 8,
-//    LL_FEATURE_RSP= 9,
-//    LL_PAUSE_ENC_REQ= 10,
-//    LL_PAUSE_ENC_RSP= 11,
-//    LL_VERSION_IND= 12,
-//    LL_REJECT_IND= 13
-//} LL_CTRL_PDU_PAYLOAD_TYPE;
-//
-//char *LL_CTRL_PDU_PAYLOAD_TYPE_STR[] = {
-//        "LL_CONNECTION_UPDATE_REQ",
-//        "LL_CHANNEL_MAP_REQ",
-//        "LL_TERMINATE_IND",
-//        "LL_ENC_REQ",
-//        "LL_ENC_RSP",
-//        "LL_START_ENC_REQ",
-//        "LL_START_ENC_RSP",
-//        "LL_UNKNOWN_RSP",
-//        "LL_FEATURE_REQ",
-//        "LL_FEATURE_RSP",
-//        "LL_PAUSE_ENC_REQ",
-//        "LL_PAUSE_ENC_RSP",
-//        "LL_VERSION_IND",
-//        "LL_REJECT_IND",
-//        "LL_RESERVED"
-//};
-//
-//typedef struct {
-//    uint8_t Opcode;
-//    uint8_t WinSize;
-//    uint16_t WinOffset;
-//    uint16_t Interval;
-//    uint16_t Latency;
-//    uint16_t Timeout;
-//    uint16_t Instant;
-//} LL_CTRL_PDU_PAYLOAD_TYPE_0;
-//
-//typedef struct {
-//    uint8_t Opcode;
-//    uint8_t ChM[5];
-//    uint16_t Instant;
-//} LL_CTRL_PDU_PAYLOAD_TYPE_1;
-//
-//typedef struct {
-//    uint8_t Opcode;
-//    uint8_t ErrorCode;
-//} LL_CTRL_PDU_PAYLOAD_TYPE_2_7_13;
-//
-//typedef struct {
-//    uint8_t Opcode;
-//    uint8_t Rand[8];
-//    uint8_t EDIV[2];
-//    uint8_t SKDm[8];
-//    uint8_t IVm[4];
-//} LL_CTRL_PDU_PAYLOAD_TYPE_3;
-//
-//typedef struct {
-//    uint8_t Opcode;
-//    uint8_t SKDs[8];
-//    uint8_t IVs[4];
-//} LL_CTRL_PDU_PAYLOAD_TYPE_4;
-//
-//typedef struct {
-//    uint8_t Opcode;
-//} LL_CTRL_PDU_PAYLOAD_TYPE_5_6_10_11;
-//
-//typedef struct {
-//    uint8_t Opcode;
-//    uint8_t FeatureSet[8];
-//} LL_CTRL_PDU_PAYLOAD_TYPE_8_9;
-//
-//typedef struct {
-//    uint8_t Opcode;
-//    uint8_t VersNr;
-//    uint16_t CompId;
-//    uint16_t SubVersNr;
-//} LL_CTRL_PDU_PAYLOAD_TYPE_12;
-//
-//typedef struct {
-//    uint8_t Opcode;
-//    uint8_t payload_byte[40];
-//} LL_CTRL_PDU_PAYLOAD_TYPE_R;
-
-//typedef enum
-//{
-//    ADV_IND = 0,
-//    ADV_DIRECT_IND= 1,
-//    ADV_NONCONN_IND= 2,
-//    SCAN_REQ= 3,
-//    SCAN_RSP= 4,
-//    CONNECT_REQ= 5,
-//    ADV_SCAN_IND= 6,
-//    RESERVED0= 7,
-//    RESERVED1= 8,
-//    RESERVED2= 9,
-//    RESERVED3= 10,
-//    RESERVED4= 11,
-//    RESERVED5= 12,
-//    RESERVED6= 13,
-//    RESERVED7= 14,
-//    RESERVED8= 15
-//} ADV_PDU_TYPE;
-
-//char *ADV_PDU_TYPE_STR[] = {
-//        "ADV_IND",
-//        "ADV_DIRECT_IND",
-//        "ADV_NONCONN_IND",
-//        "SCAN_REQ",
-//        "SCAN_RSP",
-//        "CONNECT_REQ",
-//        "ADV_SCAN_IND",
-//        "RESERVED0",
-//        "RESERVED1",
-//        "RESERVED2",
-//        "RESERVED3",
-//        "RESERVED4",
-//        "RESERVED5",
-//        "RESERVED6",
-//        "RESERVED7",
-//        "RESERVED8"
-//};
-
-//typedef struct {
-//    uint8_t AdvA[6];
-//    uint8_t Data[31];
-//} ADV_PDU_PAYLOAD_TYPE_0_2_4_6;
-//
-//typedef struct {
-//    uint8_t A0[6];
-//    uint8_t A1[6];
-//} ADV_PDU_PAYLOAD_TYPE_1_3;
-
-//typedef struct {
-//    uint8_t InitA[6];
-//    uint8_t AdvA[6];
-//    uint8_t AA[4];
-//    uint32_t CRCInit;
-//    uint8_t WinSize;
-//    uint16_t WinOffset;
-//    uint16_t Interval;
-//    uint16_t Latency;
-//    uint16_t Timeout;
-//    uint8_t ChM[5];
-//    uint8_t Hop;
-//    uint8_t SCA;
-//} ADV_PDU_PAYLOAD_TYPE_5;
-//
-//typedef struct {
-//    uint8_t payload_byte[40];
-//} ADV_PDU_PAYLOAD_TYPE_R;
-
 /**
  * Update the crc value with new data.
  *
@@ -1491,19 +1312,14 @@ bool crc_check(uint8_t *tmp_byte, int body_len, uint32_t crc_init) {
 // demodulates and parses a packet
 void receiver(IQ_TYPE *rxp_in, int buf_len, int channel_number, uint32_t access_addr, uint32_t crc_init, int verbose_flag, int raw_flag) {
     static int pkt_count = 0;
-    //static ADV_PDU_PAYLOAD_TYPE_R adv_pdu_payload;
-    //static LL_DATA_PDU_PAYLOAD_TYPE ll_data_pdu_payload;
     static struct timeval time_current_pkt, time_pre_pkt;
     const int demod_buf_len = LEN_BUF_MAX_NUM_PHY_SAMPLE+(LEN_BUF/2);
 
-    //ADV_PDU_TYPE adv_pdu_type;
-    //LL_PDU_TYPE ll_pdu_type;
 
     IQ_TYPE *rxp = rxp_in;
     int num_demod_byte, hit_idx, buf_len_eaten, payload_len, time_diff, i;
     int num_symbol_left = buf_len/(SAMPLE_PER_SYMBOL*2); //2 for IQ
     bool crc_flag;
-    //bool adv_flag = (channel_number==37 || channel_number==38 || channel_number==39);
 
     if (pkt_count == 0) { // the 1st time run
         gettimeofday(&time_current_pkt, NULL);
@@ -1515,10 +1331,10 @@ void receiver(IQ_TYPE *rxp_in, int buf_len, int channel_number, uint32_t access_
     while( 1 )
     {
         hit_idx = search_unique_bits(rxp, num_symbol_left, access_bit, access_bit_mask, LEN_DEMOD_BUF_ACCESS);
-//        if ( hit_idx == -1 ) {
-//            break;
-//        }
-        //pkt_count++;
+        if ( hit_idx == -1 ) {
+            break;
+        }
+        pkt_count++;
         //printf("hit %d\n", hit_idx);
 
         //printf("%d %d %d %d %d %d %d %d\n", rxp[hit_idx+0], rxp[hit_idx+1], rxp[hit_idx+2], rxp[hit_idx+3], rxp[hit_idx+4], rxp[hit_idx+5], rxp[hit_idx+6], rxp[hit_idx+7]);
