@@ -1370,8 +1370,9 @@ void receiver(IQ_TYPE *rxp_in, int buf_len, int channel_number, uint32_t access_
             time_pre_pkt = time_current_pkt;
 
             printf("%ld.%06ld Pkt%d Ch%d AA:%08x ", time_current_pkt.tv_sec, time_current_pkt.tv_usec, pkt_count, channel_number, access_addr);
+            printf("L:%d P:%x ", tmp_byte[0], tmp_byte[1] );
             printf("Raw:");
-            for(i=0; i<16; i++) {
+            for(i=2; i<tmp_byte[0]; i++) {
                 printf("%02x ", tmp_byte[i]);
             }
             printf("\n");
