@@ -999,7 +999,7 @@ void parse_commandline(
         int* hop_flag,
         char** filename_pcap
 ) {
-    printf("BLE sniffer. Xianjun Jiao. putaoshu@msn.com\n\n");
+    printf("nrf esb sniffer. Thanks for Xianjun Jiao. putaoshu@msn.com\n\n");
 
     // Default values
     (*chan) = DEFAULT_CHANNEL;
@@ -1356,7 +1356,7 @@ void receiver(IQ_TYPE *rxp_in, int buf_len, int channel_number, uint32_t access_
             break;
         }
 
-        demod_byte(rxp+(8*15), num_demod_byte, tmp_byte);
+        demod_byte(rxp-8, num_demod_byte, tmp_byte);
 
         //if(!raw_flag) scramble_byte(tmp_byte, num_demod_byte, scramble_table[channel_number], tmp_byte);
         rxp = rxp_in + buf_len_eaten;
