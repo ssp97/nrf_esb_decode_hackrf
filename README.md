@@ -1,5 +1,10 @@
 fork form https://github.com/JiaoXianjun/BTLE
 
+```
+修改后适用于NRF 2.4Ghz的通讯接收。
+```
+
+
 
 BTLE
 ========
